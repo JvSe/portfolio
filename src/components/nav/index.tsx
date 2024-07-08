@@ -1,35 +1,14 @@
 "use client";
 
+import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { links } from "./route";
 
-const links = [
-  {
-    name: "home",
-    path: "/",
-  },
-  {
-    name: "services",
-    path: "/services",
-  },
-  {
-    name: "resume",
-    path: "/resume",
-  },
-  {
-    name: "work",
-    path: "/work",
-  },
-  {
-    name: "contact",
-    path: "/contact",
-  },
-];
-
-export const Nav = () => {
+export const Nav = ({ className }: { className?: string }) => {
   const path = usePathname();
   return (
-    <nav className="flex gap-8">
+    <nav className={cn("flex gap-8", className)}>
       {links.map((link, index) => (
         <Link
           key={`${link.name}-${index}`}
